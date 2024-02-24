@@ -1,0 +1,50 @@
+$background-color: #e5e5e5ff;
+$text-color: #070707ff;
+$close-button-background-color: #333333ff;
+$close-button-color: #ffffff;
+
+.selected-item {
+    --selected-item-background-color: #{$background-color};
+    --selected-item-text-color: #{$text-color};
+    --selected-item-close-button-background-color: #{$close-button-background-color};
+    --selected-item-close-button-color: #{$close-button-color};
+
+    background-color: var(--selected-item-background-color);
+    padding: 0.5rem;
+    margin-right: 0.5625rem;
+    margin-top: 0.5625rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    &__label {
+        color: var(--selected-item-text-color);
+        text-align: center;
+        font-weight: 400;
+    }
+
+    &__close-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-radius: 50%;
+        transform: translateX(40%) translateY(-40%);
+        border: 2px solid var(--selected-item-close-button-color);
+        color: var(--selected-item-close-button-color);
+        background-color: var(--selected-item-close-button-background-color);
+        padding: 0;
+
+        width: 1.375rem;
+        height: 1.375rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--selected-item-close-button-color);
+            color: var(--selected-item-close-button-background-color);
+            border-color: var(--selected-item-close-button-background-color);
+        }
+    }
+}

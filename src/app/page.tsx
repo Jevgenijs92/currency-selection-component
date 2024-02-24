@@ -1,94 +1,40 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import ItemSelection
+  from '@/app/components/ItemSelection/ItemSelection';
+import { useState } from 'react';
+import { Currency } from '@/app/models/models';
+
+const currencies: Currency[] = [
+  { id: 'USD', label: 'USD', numericCode: 840, symbol: '$' },
+  { id: 'EUR', label: 'EUR', numericCode: 978, symbol: '€' },
+  { id: 'GBP', label: 'GBP', numericCode: 826, symbol: '£' },
+  { id: 'JPY', label: 'JPY', numericCode: 392, symbol: '¥' },
+  { id: 'AUD', label: 'AUD', numericCode: 36, symbol: '$' },
+  { id: 'CAD', label: 'CAD', numericCode: 124, symbol: '$' },
+  { id: 'CHF', label: 'CHF', numericCode: 756, symbol: 'Fr' },
+  { id: 'CNY', label: 'CNY', numericCode: 156, symbol: '¥' },
+  { id: 'SEK', label: 'SEK', numericCode: 752, symbol: 'kr' },
+  { id: 'NZD', label: 'NZD', numericCode: 554, symbol: '$' },
+  { id: 'KRW', label: 'KRW', numericCode: 410, symbol: '₩' },
+  { id: 'SGD', label: 'SGD', numericCode: 702, symbol: '$' },
+];
+
+const preSelectedCurrencyIds: string[] = ['EUR', 'CAD'];
 
 export default function Home() {
+  const [selectedCurrencies, setSelectedCurrencies] = useState(
+    [] as Currency[]);
+
+  const handleSelectionChange = (selected: Currency[]) => {
+    setSelectedCurrencies(selected);
+    console.log(selected);
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+    <main className="page">
+      <div className="wrapper">
+        <ItemSelection items={currencies} selectionChange={handleSelectionChange}
+                       preSelectedItemIds={preSelectedCurrencyIds}/>
       </div>
     </main>
   );

@@ -1,0 +1,35 @@
+$border-color: #b7b7b7ff;
+
+.item-selection {
+  --item-selection-border-color: #{$border-color};
+
+  border-radius: 0.25rem;
+  border: 1px solid var(--selected-item-close-button-color);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  margin: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  &__group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem 0.5rem;
+
+    &:first-child {
+      text-transform: lowercase; // to match the gif in requirements
+    }
+  }
+
+  @media(max-width: 576px) {
+    padding: 0.5rem;
+    gap: 1rem;
+
+    &__group {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 0.75rem 0.5rem;
+    }
+  }
+}

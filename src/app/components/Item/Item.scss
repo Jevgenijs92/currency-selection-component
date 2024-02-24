@@ -1,0 +1,54 @@
+$background-color: #ecececff;
+$background-color-hover: #dcdcdc;
+$background-color-selected: #fbf9f9ff;
+$text-color: #114371ff;
+$border-color: #a3a3a3ff;
+$cross-color: #ff0400ff;
+
+.item {
+  --item-background-color: #{$background-color};
+  --item-background-color-hover: #{$background-color-hover};
+  --item-background-color-selected: #{$background-color-selected};
+  --item-text-color: #{$text-color};
+  --item-border-color: #{$border-color};
+  --item-cross-color: #{$cross-color};
+
+  padding: 0.5rem 0.25rem;
+  border: 1px solid var(--item-border-color);
+  border-radius: 0;
+  font-size: 1.125rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+
+  &.selected {
+    background-color: var(--item-background-color-selected);
+  }
+
+  &:hover:not(.selected) {
+    background-color: var(--item-background-color-hover);
+  }
+
+  &__selected {
+    border: 1px solid var(--item-border-color);
+    border-radius: 0.25rem;
+    width: 0.875rem;
+    height: 0.875rem;
+    display: flex;
+    justify-content: center;
+
+    &__icon {
+      color: var(--item-cross-color);
+      font-size: 0.8rem;
+      line-height: 0.875rem;
+      font-weight: 550;
+    }
+  }
+
+  &__label {
+    color: var(--item-text-color);
+    font-weight: 400;
+  }
+}

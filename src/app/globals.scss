@@ -1,0 +1,24 @@
+body {
+    background-color: #fff;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .wrapper {
+        min-width: 500px;
+    }
+}
+
+@media (max-width: 576px) {
+    .page {
+        height: auto;
+
+        .wrapper {
+            min-width: 320px;
+        }
+    }
+}
